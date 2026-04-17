@@ -1,0 +1,1656 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>IA para Docentes Jalisco Academy 2026 · Trayecto de Innovación Educativa</title>
+  <meta name="description" content="Trayecto de Innovación Educativa con Inteligencia Artificial para docentes de Jalisco. Tres sesiones sincrónicas + 6 horas autogestivas. Constancia SEJ con 9 horas." />
+  <link rel="preconnect" href="https://fonts.cdnfonts.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/garet">
+  <style>
+    :root {
+      --purple-900: #1A0B3E;
+      --purple-800: #2A1465;
+      --purple-700: #3B1E8E;
+      --purple-500: #6D3FE0;
+      --violet-400: #8B5CF6;
+
+      /* Colores del Trayecto de Innovación Educativa */
+      --m1-red: #E60050;       /* Momento 1 · Identificar el desafío */
+      --m1-soft: #FF3377;
+      --m2-orange: #F59E2D;    /* Momento 2 · Construir colectiva y creativamente */
+      --m2-soft: #FFB854;
+      --m3-green: #87B840;     /* Momento 3 · Conectar para co-crear */
+      --m3-soft: #A8D15E;
+
+      --yellow: #FFD400;
+
+      --white: #FFFFFF;
+      --white-80: rgba(255,255,255,0.82);
+      --white-60: rgba(255,255,255,0.6);
+      --white-10: rgba(255,255,255,0.1);
+      --white-05: rgba(255,255,255,0.05);
+
+      --font: 'Garet', 'Garet-Book', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font);
+      font-size: 17px;
+      line-height: 1.65;
+      color: var(--white);
+      background: var(--purple-900);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+
+    .bg-wrap {
+      position: fixed; inset: 0; z-index: -1;
+      background:
+        radial-gradient(ellipse 70% 50% at 15% 10%, rgba(230, 0, 80, 0.25), transparent 60%),
+        radial-gradient(ellipse 60% 45% at 85% 25%, rgba(245, 158, 45, 0.18), transparent 60%),
+        radial-gradient(ellipse 60% 45% at 50% 90%, rgba(135, 184, 64, 0.15), transparent 60%),
+        linear-gradient(135deg, #1A0B3E 0%, #2A1465 40%, #3B1E8E 100%);
+    }
+    .bg-grid {
+      position: fixed; inset: 0; z-index: -1;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black 30%, transparent 80%);
+      -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black 30%, transparent 80%);
+    }
+
+    h1, h2, h3, h4 {
+      font-family: var(--font); color: var(--white);
+      letter-spacing: -0.02em; margin: 0 0 0.5em;
+      line-height: 1.05; font-weight: 700;
+    }
+    h1 { font-size: clamp(2.4rem, 6.2vw, 4.8rem); font-weight: 800; }
+    h2 { font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 700; }
+    h3 { font-size: 1.35rem; font-weight: 600; }
+    p { margin: 0 0 1em; color: var(--white-80); }
+
+    .accent-red { color: var(--m1-red); }
+    .accent-orange { color: var(--m2-orange); }
+    .accent-green { color: var(--m3-green); }
+
+    a { color: var(--m1-soft); text-decoration: none; transition: color 180ms ease; }
+    a:hover { color: var(--m1-red); }
+    a:focus-visible, button:focus-visible {
+      outline: 3px solid var(--m1-red);
+      outline-offset: 3px; border-radius: 8px;
+    }
+
+    .container {
+      width: 100%; max-width: 1200px;
+      margin: 0 auto; padding: 0 clamp(1rem, 4vw, 2rem);
+    }
+
+    .skip-link {
+      position: absolute; top: -40px; left: 8px;
+      background: var(--m1-red); color: var(--white);
+      padding: 10px 14px; border-radius: 8px; z-index: 100;
+      transition: top 180ms ease;
+    }
+    .skip-link:focus { top: 8px; color: var(--white); }
+
+    /* Header */
+    header.site-header {
+      position: sticky; top: 0; z-index: 40;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      background: rgba(26, 11, 62, 0.6);
+      border-bottom: 1px solid var(--white-10);
+    }
+    .nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 16px 0; gap: 16px;
+    }
+    .brand {
+      display: flex; align-items: center; gap: 14px;
+      font-weight: 700; color: var(--white); text-decoration: none;
+    }
+    .brand-logos {
+      display: flex; align-items: center; gap: 10px;
+    }
+    .brand-logo-slot {
+      height: 40px; padding: 0 12px;
+      display: inline-flex; align-items: center;
+      background: var(--white);
+      border-radius: 8px;
+      font-family: var(--font);
+      font-size: 0.82rem;
+      color: var(--purple-900);
+      font-weight: 800;
+      letter-spacing: 0.02em;
+    }
+    .brand-logo-slot img { height: 28px; width: auto; display: block; }
+    .brand-logo-slot.dark { background: var(--m1-red); color: var(--white); }
+    .brand-logo { height: 48px; width: auto; display: block; }
+    @media (max-width: 600px) { .brand-logo { height: 40px; } }
+    .brand-text { line-height: 1.1; font-size: 0.95rem; }
+    .brand-text small {
+      display: block; font-weight: 400; color: var(--white-60);
+      font-size: 0.78rem;
+    }
+    .nav-links {
+      display: flex; gap: 24px; list-style: none;
+      margin: 0; padding: 0; align-items: center;
+    }
+    .nav-links a {
+      color: var(--white-80); font-weight: 500;
+      font-size: 0.92rem; padding: 8px 4px;
+    }
+    .nav-links a:hover { color: var(--white); }
+    @media (max-width: 1024px) { .nav-links li:not(:last-child) { display: none; } .brand-text { display: none; } }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 28px; min-height: 48px;
+      font-family: var(--font); font-weight: 600;
+      font-size: 1rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease, border-color 180ms ease;
+      text-decoration: none;
+    }
+    .btn-primary {
+      background: var(--m1-red); color: var(--white);
+      box-shadow: 0 8px 32px rgba(230, 0, 80, 0.45);
+    }
+    .btn-primary:hover {
+      background: var(--m1-soft); color: var(--white);
+      transform: translateY(-1px);
+      box-shadow: 0 12px 40px rgba(230, 0, 80, 0.55);
+    }
+    .btn-secondary {
+      background: var(--white-05); color: var(--white);
+      border: 1.5px solid var(--white-10);
+      backdrop-filter: blur(10px);
+    }
+    .btn-secondary:hover {
+      background: var(--white-10); border-color: rgba(255,255,255,0.25);
+      color: var(--white); transform: translateY(-1px);
+    }
+    .btn svg { width: 18px; height: 18px; }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      padding: clamp(40px, 7vw, 72px) 0 clamp(40px, 7vw, 72px);
+      display: flex; align-items: center;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+      gap: clamp(32px, 5vw, 64px);
+      align-items: center; width: 100%;
+    }
+    @media (max-width: 960px) { .hero-grid { grid-template-columns: 1fr; } }
+
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 8px 16px;
+      background: var(--white-10);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--white-10);
+      color: var(--white);
+      font-weight: 500; font-size: 0.85rem;
+      letter-spacing: 0.04em;
+      border-radius: 999px;
+      margin-bottom: 18px;
+    }
+    .eyebrow .dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--m1-red);
+      box-shadow: 0 0 12px var(--m1-red);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.6; transform: scale(1.2); }
+    }
+
+    .hero-subtitle {
+      display: inline-block;
+      margin-top: 12px; margin-bottom: 0;
+      font-size: clamp(1rem, 1.4vw, 1.15rem);
+      color: var(--white-80);
+      font-weight: 500;
+      letter-spacing: 0.01em;
+    }
+    .hero-subtitle .pill {
+      display: inline-block;
+      padding: 2px 12px;
+      background: var(--m2-orange);
+      color: var(--purple-900);
+      border-radius: 999px;
+      font-weight: 700;
+      margin-right: 6px;
+      font-size: 0.9rem;
+    }
+
+    .hero p.lead {
+      font-size: clamp(1.05rem, 1.5vw, 1.18rem);
+      color: var(--white-80);
+      max-width: 54ch;
+      margin: 24px 0 28px;
+    }
+    .hero p.lead strong { color: var(--white); font-weight: 700; }
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 8px; }
+
+    /* Event key info row */
+    .event-key {
+      display: flex; gap: 12px; flex-wrap: wrap;
+      margin-top: 22px;
+    }
+    .event-key-item {
+      display: flex; align-items: center; gap: 10px;
+      padding: 10px 16px;
+      background: var(--white-05);
+      border: 1px solid var(--white-10);
+      border-radius: 12px;
+      font-size: 0.9rem;
+      color: var(--white-80);
+    }
+    .event-key-item svg { width: 18px; height: 18px; color: var(--m1-soft); flex-shrink: 0; }
+    .event-key-item strong { color: var(--white); font-weight: 600; }
+
+    /* Countdown */
+    .countdown-label {
+      font-size: 0.78rem; letter-spacing: 0.22em;
+      color: var(--white-60); font-weight: 600;
+      margin: 32px 0 12px; text-transform: uppercase;
+    }
+    .countdown {
+      display: flex; align-items: center; gap: 10px;
+      flex-wrap: wrap;
+    }
+    .countdown-unit {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--white-10);
+      backdrop-filter: blur(12px);
+      border-radius: 14px;
+      padding: 14px 18px;
+      min-width: 80px;
+      text-align: center;
+    }
+    .countdown-unit .num {
+      font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+      font-weight: 700; line-height: 1;
+      color: var(--white);
+      font-variant-numeric: tabular-nums;
+    }
+    .countdown-unit .unit-label {
+      font-size: 0.68rem; letter-spacing: 0.16em;
+      color: var(--white-60); text-transform: uppercase;
+      margin-top: 6px; font-weight: 600;
+    }
+    .countdown-sep {
+      font-size: 1.6rem; color: var(--white-60); font-weight: 500;
+    }
+
+    /* Hero visual */
+    .hero-visual {
+      position: relative;
+      aspect-ratio: 4 / 5;
+      max-width: 520px;
+      margin: 0 auto;
+      border-radius: 32px;
+      overflow: hidden;
+      background: linear-gradient(135deg, rgba(230, 0, 80, 0.25), rgba(109, 63, 224, 0.35));
+      border: 1px solid var(--white-10);
+      box-shadow: 0 30px 80px -20px rgba(0,0,0,0.5);
+    }
+    .hero-visual img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .hero-visual .placeholder {
+      position: absolute; inset: 0;
+      display: grid; place-items: center;
+      color: var(--white); text-align: center; padding: 30px;
+    }
+    .hero-visual .placeholder p {
+      color: var(--white-60); font-size: 0.85rem;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      margin: 0 0 14px; font-weight: 500;
+    }
+    .hero-visual .placeholder strong {
+      display: block; font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      line-height: 1.1; font-weight: 800;
+    }
+    .hero-visual-badge {
+      position: absolute; top: 24px; left: 24px;
+      background: var(--m1-red); color: var(--white);
+      padding: 10px 18px; border-radius: 999px;
+      font-weight: 700; font-size: 0.9rem;
+      box-shadow: 0 10px 24px rgba(230, 0, 80, 0.5);
+    }
+    .hero-visual-tag {
+      position: absolute; bottom: 24px; left: 24px; right: 24px;
+      padding: 18px 20px;
+      background: rgba(26, 11, 62, 0.78);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--white-10);
+      border-radius: 16px;
+      color: var(--white);
+    }
+    .hero-visual-tag .t-label { font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--white-60); font-weight: 600; margin-bottom: 4px; }
+    .hero-visual-tag .t-main { font-weight: 700; font-size: 1rem; }
+    .hero-visual-orange-dot {
+      position: absolute; top: -30px; right: -30px;
+      width: 140px; height: 140px; border-radius: 50%;
+      background: var(--m2-orange); opacity: 0.9;
+      filter: blur(2px);
+      z-index: -1;
+    }
+
+    /* Quote band */
+    .quote-band {
+      padding: 60px 0;
+      background:
+        radial-gradient(ellipse at 20% 50%, rgba(230, 0, 80, 0.18), transparent 55%),
+        radial-gradient(ellipse at 80% 50%, rgba(245, 158, 45, 0.14), transparent 55%),
+        rgba(0,0,0,0.22);
+      border-top: 1px solid var(--white-10);
+      border-bottom: 1px solid var(--white-10);
+      text-align: center;
+    }
+    .quote-band blockquote {
+      margin: 0 auto; max-width: 820px;
+      padding: 0 clamp(1rem, 4vw, 2rem);
+    }
+    .quote-band blockquote p {
+      font-size: clamp(1.4rem, 3vw, 2.2rem);
+      font-weight: 700; font-style: italic;
+      line-height: 1.25; color: var(--white);
+      letter-spacing: -0.01em;
+      margin: 0 0 14px;
+    }
+    .quote-band blockquote p::before { content: "\201C"; color: var(--m1-red); margin-right: 4px; }
+    .quote-band blockquote p::after { content: "\201D"; color: var(--m1-red); margin-left: 4px; }
+    .quote-band blockquote footer {
+      font-size: 0.85rem; letter-spacing: 0.16em;
+      color: var(--white-60); text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    /* Stats */
+    .stats {
+      border-bottom: 1px solid var(--white-10);
+      padding: 48px 0;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+    }
+    @media (max-width: 820px) { .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 32px; } }
+    .stat { text-align: center; }
+    .stat .num {
+      font-size: clamp(2rem, 4.5vw, 3rem);
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--white), var(--m1-soft));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+    }
+    .stat:nth-child(2) .num { background: linear-gradient(135deg, var(--white), var(--m2-orange)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+    .stat:nth-child(3) .num { background: linear-gradient(135deg, var(--white), var(--m3-soft)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+    .stat .label { font-size: 0.95rem; color: var(--white-60); margin-top: 10px; }
+
+    /* Section */
+    section.section { padding: clamp(64px, 9vw, 112px) 0; position: relative; }
+    .section-head { max-width: 820px; margin-bottom: 48px; }
+    .section-head.center { margin-left: auto; margin-right: auto; text-align: center; }
+    .section-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-weight: 600; font-size: 0.85rem;
+      letter-spacing: 0.16em;
+      color: var(--m1-soft);
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .section-eyebrow::before {
+      content: ""; width: 28px; height: 2px;
+      background: var(--m1-soft); border-radius: 2px;
+    }
+
+    /* Trayecto visual */
+    .trayecto {
+      text-align: center;
+      padding: 60px 0 40px;
+    }
+    .trayecto-diagram {
+      width: 100%; max-width: 560px;
+      margin: 0 auto;
+      position: relative;
+      aspect-ratio: 1 / 1;
+    }
+    .trayecto-image {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+    .trayecto-overlay {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+    }
+    .trayecto-legend {
+      margin-top: 40px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      max-width: 960px;
+      margin-left: auto; margin-right: auto;
+    }
+    @media (max-width: 820px) { .trayecto-legend { grid-template-columns: 1fr; } }
+    .trayecto-legend-item {
+      padding: 24px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--white-10);
+      backdrop-filter: blur(8px);
+      text-align: left;
+    }
+    .trayecto-legend-item .tag {
+      display: inline-block;
+      padding: 4px 12px; border-radius: 999px;
+      font-size: 0.72rem; letter-spacing: 0.12em;
+      font-weight: 700; text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .trayecto-legend-item.m1 .tag { background: var(--m1-red); color: var(--white); }
+    .trayecto-legend-item.m2 .tag { background: var(--m2-orange); color: var(--purple-900); }
+    .trayecto-legend-item.m3 .tag { background: var(--m3-green); color: var(--white); }
+    .trayecto-legend-item h3 { color: var(--white); margin-bottom: 6px; font-size: 1.1rem; }
+    .trayecto-legend-item p { margin: 0; font-size: 0.92rem; color: var(--white-80); }
+    .trayecto-legend-item small {
+      display: block; margin-top: 10px;
+      color: var(--white-60); font-size: 0.82rem;
+    }
+
+    /* Programa - 3 sesiones alineadas a los 3 momentos */
+    .sessions-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    @media (max-width: 960px) { .sessions-grid { grid-template-columns: 1fr; } }
+    .session-card {
+      position: relative;
+      padding: 32px;
+      border-radius: 24px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+      border: 1px solid var(--white-10);
+      backdrop-filter: blur(12px);
+      overflow: hidden;
+      transition: transform 260ms ease, border-color 260ms ease;
+    }
+    .session-card::before {
+      content: "";
+      position: absolute; top: 0; left: 0; right: 0; height: 4px;
+    }
+    .session-card.m1::before { background: var(--m1-red); }
+    .session-card.m2::before { background: var(--m2-orange); }
+    .session-card.m3::before { background: var(--m3-green); }
+    .session-card:hover { transform: translateY(-4px); border-color: rgba(255,255,255,0.25); }
+
+    .session-momento {
+      display: inline-block;
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 0.72rem; letter-spacing: 0.14em;
+      font-weight: 700; text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .session-card.m1 .session-momento { background: rgba(230,0,80,0.18); color: var(--m1-soft); border: 1px solid rgba(230,0,80,0.4); }
+    .session-card.m2 .session-momento { background: rgba(245,158,45,0.18); color: var(--m2-orange); border: 1px solid rgba(245,158,45,0.4); }
+    .session-card.m3 .session-momento { background: rgba(135,184,64,0.18); color: var(--m3-soft); border: 1px solid rgba(135,184,64,0.4); }
+
+    .session-title {
+      font-size: 1.1rem; font-weight: 700;
+      color: var(--white); margin-bottom: 12px;
+    }
+    .session-card.m1 .session-title { color: var(--m1-soft); }
+    .session-card.m2 .session-title { color: var(--m2-orange); }
+    .session-card.m3 .session-title { color: var(--m3-soft); }
+
+    .session-date {
+      font-size: 2rem; font-weight: 800;
+      color: var(--white); line-height: 1;
+      margin-bottom: 4px;
+    }
+    .session-date small { font-size: 0.88rem; font-weight: 500; color: var(--white-60); display: block; margin-top: 6px; }
+    .session-time {
+      display: inline-flex; align-items: center; gap: 6px;
+      color: var(--white-80); font-size: 0.92rem;
+      margin: 10px 0 16px;
+      font-weight: 500;
+    }
+    .session-time svg { width: 16px; height: 16px; color: var(--white-60); }
+    .session-card h3 { color: var(--white); margin: 10px 0 8px; font-size: 1.1rem; }
+    .session-card p { color: var(--white-80); margin: 0; font-size: 0.94rem; }
+
+    /* Galería docentes de Jalisco (bento) */
+    .gallery {
+      padding: clamp(48px, 7vw, 88px) 0;
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 16px;
+      height: clamp(420px, 52vw, 560px);
+    }
+    @media (max-width: 820px) {
+      .gallery-grid { grid-template-columns: 1fr; grid-template-rows: auto auto auto; height: auto; }
+      .gallery-item.large { aspect-ratio: 4/3; }
+      .gallery-item { aspect-ratio: 16/9; }
+    }
+    .gallery-item {
+      position: relative;
+      border-radius: 22px;
+      overflow: hidden;
+      border: 1px solid var(--white-10);
+      background: linear-gradient(135deg, rgba(230,0,80,0.15), rgba(109,63,224,0.2));
+      box-shadow: 0 20px 40px -15px rgba(0,0,0,0.4);
+    }
+    .gallery-item.large { grid-row: span 2; }
+    .gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 600ms ease; }
+    .gallery-item:hover img { transform: scale(1.04); }
+    .gallery-item::after {
+      content: "";
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, transparent 40%, rgba(26,11,62,0.7));
+      pointer-events: none;
+    }
+    .gallery-item .caption {
+      position: absolute; bottom: 16px; left: 18px; right: 18px;
+      color: var(--white);
+      font-weight: 700; font-size: 0.92rem;
+      z-index: 2;
+    }
+    .gallery-item .caption small {
+      display: block; font-size: 0.72rem;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: rgba(255,255,255,0.7);
+      font-weight: 600; margin-bottom: 4px;
+    }
+    .gallery-item .badge-dot {
+      position: absolute; top: 14px; left: 14px;
+      padding: 6px 12px; border-radius: 999px;
+      font-size: 0.7rem; letter-spacing: 0.12em;
+      font-weight: 700; text-transform: uppercase;
+      z-index: 2;
+    }
+    .gallery-item.g-preescolar .badge-dot { background: var(--m1-red); color: var(--white); }
+    .gallery-item.g-google .badge-dot { background: var(--m2-orange); color: var(--purple-900); }
+    .gallery-item.g-plataforma .badge-dot { background: var(--m3-green); color: var(--white); }
+    .gallery-placeholder {
+      position: absolute; inset: 0;
+      display: grid; place-items: center;
+      color: var(--white); text-align: center; padding: 16px;
+      font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--white-60);
+    }
+
+    /* Showcase / Gran evento */
+    .showcase {
+      position: relative;
+      padding: clamp(72px, 10vw, 120px) 0;
+    }
+    .showcase-inner {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(32px, 5vw, 64px);
+      align-items: center;
+      padding: clamp(36px, 5vw, 64px);
+      border-radius: 32px;
+      background:
+        radial-gradient(circle at 90% 10%, rgba(255, 212, 0, 0.22), transparent 55%),
+        radial-gradient(circle at 10% 90%, rgba(135, 184, 64, 0.18), transparent 55%),
+        linear-gradient(135deg, rgba(230, 0, 80, 0.32), rgba(245, 158, 45, 0.22), rgba(109, 63, 224, 0.35));
+      border: 1px solid var(--white-10);
+      backdrop-filter: blur(18px);
+      overflow: hidden;
+    }
+    @media (max-width: 900px) { .showcase-inner { grid-template-columns: 1fr; } }
+    .showcase-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--yellow); color: var(--purple-900);
+      padding: 8px 16px; border-radius: 999px;
+      font-weight: 800; font-size: 0.82rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      box-shadow: 0 6px 20px rgba(255, 212, 0, 0.35);
+    }
+    .showcase h2 { color: var(--white); margin-bottom: 14px; }
+    .showcase h2 em { font-style: normal; color: var(--yellow); }
+    .showcase p { color: rgba(255,255,255,0.88); font-size: 1.05rem; max-width: 52ch; }
+    .showcase-stats {
+      display: flex; gap: 24px; flex-wrap: wrap;
+      margin-top: 24px;
+    }
+    .showcase-stat {
+      display: flex; align-items: center; gap: 10px;
+      color: var(--white);
+    }
+    .showcase-stat .big {
+      font-size: 1.8rem; font-weight: 800;
+      color: var(--yellow); line-height: 1;
+    }
+    .showcase-stat .desc { font-size: 0.85rem; color: var(--white-80); line-height: 1.2; }
+    .showcase-visual {
+      position: relative;
+      aspect-ratio: 4 / 3;
+      max-width: 520px;
+      margin: 0 auto;
+      width: 100%;
+      border-radius: 24px;
+      overflow: hidden;
+      background: linear-gradient(135deg, var(--purple-700), var(--purple-900));
+      border: 1px solid var(--white-10);
+      box-shadow: 0 30px 60px -20px rgba(0,0,0,0.5);
+    }
+    .showcase-visual img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .showcase-visual .placeholder {
+      position: absolute; inset: 0;
+      display: grid; place-items: center;
+      color: var(--white); text-align: center; padding: 24px;
+    }
+    .showcase-visual .placeholder small {
+      display: block; font-size: 0.78rem;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--white-60); font-weight: 500; margin-bottom: 12px;
+    }
+    .showcase-visual .placeholder strong {
+      display: block; font-size: clamp(1.3rem, 2.6vw, 1.8rem);
+      font-weight: 800; line-height: 1.1;
+    }
+    .showcase-visual-stage {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      height: 40%;
+      background:
+        linear-gradient(180deg, transparent, rgba(26,11,62,0.85) 60%),
+        repeating-linear-gradient(0deg, rgba(255,255,255,0.04) 0 2px, transparent 2px 22px);
+      pointer-events: none;
+    }
+    .showcase-audience-dots {
+      position: absolute; bottom: 14%; left: 0; right: 0;
+      display: flex; justify-content: center; gap: 4px;
+      flex-wrap: wrap; padding: 0 30px;
+      max-width: 90%; margin: 0 auto;
+    }
+    .showcase-audience-dots span {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: rgba(255,255,255,0.5);
+    }
+    .showcase-audience-dots span:nth-child(4n) { background: var(--m1-soft); }
+    .showcase-audience-dots span:nth-child(5n) { background: var(--m2-orange); }
+    .showcase-audience-dots span:nth-child(7n) { background: var(--m3-soft); }
+    .showcase-spotlight {
+      position: absolute; top: 8%; left: 50%;
+      transform: translateX(-50%);
+      width: 52%; height: 50%;
+      background: radial-gradient(ellipse at top, rgba(255,212,0,0.35), transparent 70%);
+      filter: blur(6px);
+      pointer-events: none;
+    }
+    .showcase-tag {
+      position: absolute; top: 20px; right: 20px;
+      background: rgba(26, 11, 62, 0.78);
+      backdrop-filter: blur(14px);
+      padding: 10px 16px; border-radius: 12px;
+      color: var(--white);
+      border: 1px solid var(--white-10);
+      font-size: 0.78rem;
+    }
+    .showcase-tag strong { display: block; font-weight: 700; color: var(--yellow); font-size: 0.88rem; margin-top: 2px; }
+
+    /* Tools grid */
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    @media (max-width: 960px) { .tools-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 600px) { .tools-grid { grid-template-columns: 1fr; } }
+    .tool {
+      padding: 26px;
+      border-radius: 20px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+      border: 1px solid var(--white-10);
+      backdrop-filter: blur(12px);
+      transition: transform 260ms ease, border-color 260ms ease;
+    }
+    .tool:hover { transform: translateY(-3px); border-color: rgba(255,255,255,0.2); }
+    .tool-icon {
+      width: 52px; height: 52px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--m1-red), var(--purple-500));
+      display: grid; place-items: center;
+      margin-bottom: 16px;
+      color: var(--white);
+      box-shadow: 0 6px 20px rgba(230, 0, 80, 0.3);
+    }
+    .tool-icon svg { width: 24px; height: 24px; }
+    .tool:nth-child(3n+2) .tool-icon { background: linear-gradient(135deg, var(--m2-orange), var(--m1-red)); box-shadow: 0 6px 20px rgba(245,158,45,0.3); }
+    .tool:nth-child(3n+3) .tool-icon { background: linear-gradient(135deg, var(--m3-green), var(--purple-500)); box-shadow: 0 6px 20px rgba(135,184,64,0.3); }
+    .tool h3 { font-size: 1.1rem; margin-bottom: 6px; color: var(--white); }
+    .tool p { font-size: 0.9rem; color: var(--white-80); margin: 0; }
+
+    /* Constancia */
+    .constancia {
+      padding: clamp(32px, 5vw, 56px);
+      border-radius: 28px;
+      background:
+        radial-gradient(circle at 80% 20%, rgba(245, 158, 45, 0.22), transparent 55%),
+        linear-gradient(135deg, rgba(230, 0, 80, 0.2), rgba(109, 63, 224, 0.28));
+      border: 1px solid var(--white-10);
+      backdrop-filter: blur(16px);
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: clamp(32px, 5vw, 64px);
+      align-items: center;
+    }
+    @media (max-width: 880px) { .constancia { grid-template-columns: 1fr; } }
+    .constancia-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--m2-orange); color: var(--purple-900);
+      padding: 8px 16px; border-radius: 999px;
+      font-weight: 700; font-size: 0.88rem;
+      margin-bottom: 20px;
+    }
+    .constancia ul {
+      list-style: none; padding: 0; margin: 20px 0 0;
+      display: grid; gap: 12px;
+    }
+    .constancia ul li {
+      display: flex; align-items: flex-start; gap: 12px;
+      color: var(--white-80); font-size: 0.98rem;
+    }
+    .constancia ul li svg {
+      width: 22px; height: 22px; color: var(--m2-orange);
+      flex-shrink: 0; margin-top: 2px;
+    }
+    .constancia-visual {
+      position: relative;
+      aspect-ratio: 3 / 4;
+      max-width: 340px;
+      margin: 0 auto;
+      border-radius: 20px;
+      overflow: hidden;
+      background: linear-gradient(180deg, #fff, #f5f5f7);
+      box-shadow: 0 30px 60px -20px rgba(0,0,0,0.5);
+      transform: rotate(-3deg);
+      border: 8px solid var(--white);
+    }
+    .constancia-visual-inner {
+      position: absolute; inset: 0;
+      padding: 24px; display: flex; flex-direction: column; color: var(--purple-900);
+      font-size: 0.75rem;
+    }
+    .cv-header { display: flex; justify-content: space-between; align-items: start; margin-bottom: 14px; border-bottom: 2px solid var(--m1-red); padding-bottom: 10px; }
+    .cv-header strong { font-weight: 800; font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; }
+    .cv-body { text-align: center; flex: 1; display: flex; flex-direction: column; justify-content: center; }
+    .cv-body .cv-to { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.2em; color: #888; margin-bottom: 8px; }
+    .cv-body .cv-name { font-size: 1.15rem; font-weight: 800; color: var(--m1-red); border-bottom: 1px dashed #ccc; padding-bottom: 10px; margin-bottom: 12px; }
+    .cv-body .cv-desc { font-size: 0.65rem; color: #555; line-height: 1.5; }
+    .cv-body .cv-hours { font-size: 2.2rem; font-weight: 800; color: var(--purple-900); margin: 8px 0 2px; line-height: 1; }
+    .cv-body .cv-hours-label { font-size: 0.68rem; color: #666; }
+    .cv-footer { display: flex; justify-content: space-between; align-items: end; margin-top: 12px; font-size: 0.58rem; color: #666; }
+
+    /* CTA */
+    .cta {
+      position: relative;
+      padding: clamp(72px, 10vw, 120px) 0;
+    }
+    .cta-inner {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 48px;
+      align-items: center;
+      padding: clamp(32px, 5vw, 56px);
+      border-radius: 32px;
+      background: linear-gradient(135deg, rgba(230, 0, 80, 0.3), rgba(109, 63, 224, 0.35));
+      border: 1px solid var(--white-10);
+      backdrop-filter: blur(20px);
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-inner::before {
+      content: "";
+      position: absolute;
+      top: -50%; right: -20%;
+      width: 60%; height: 200%;
+      background: radial-gradient(ellipse, rgba(245, 158, 45, 0.24), transparent 60%);
+      pointer-events: none;
+    }
+    @media (max-width: 880px) { .cta-inner { grid-template-columns: 1fr; } }
+    .cta h2 { position: relative; }
+
+    .cta-form {
+      background: rgba(26, 11, 62, 0.8);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--white-10);
+      border-radius: 20px;
+      padding: 32px;
+      position: relative;
+    }
+    .cta-form h3 { margin-bottom: 6px; color: var(--white); }
+    .cta-form > p { color: var(--white-60); font-size: 0.92rem; margin-bottom: 20px; }
+    .form-field { margin-bottom: 16px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    @media (max-width: 520px) { .form-row { grid-template-columns: 1fr; } }
+    .form-field label {
+      display: block; font-weight: 600; color: var(--white);
+      font-size: 0.85rem; margin-bottom: 8px;
+    }
+    .form-field input, .form-field select {
+      width: 100%;
+      padding: 13px 15px;
+      min-height: 48px;
+      background: rgba(255,255,255,0.06);
+      border: 1.5px solid var(--white-10);
+      border-radius: 12px;
+      font-family: var(--font); font-size: 0.95rem;
+      color: var(--white);
+      transition: border-color 180ms ease, box-shadow 180ms ease, background 180ms ease;
+    }
+    .form-field input::placeholder { color: var(--white-60); }
+    .form-field input:focus, .form-field select:focus {
+      outline: none;
+      border-color: var(--m1-red);
+      background: rgba(255,255,255,0.1);
+      box-shadow: 0 0 0 3px rgba(230, 0, 80, 0.25);
+    }
+    .form-field select option { background: var(--purple-900); color: var(--white); }
+    .form-field small { display: block; color: var(--white-60); font-size: 0.8rem; margin-top: 6px; }
+    .cta-form .btn { width: 100%; justify-content: center; margin-top: 6px; }
+    #form-success {
+      margin-top: 16px; padding: 14px; border-radius: 12px;
+      background: rgba(135, 184, 64, 0.15); border: 1px solid rgba(135, 184, 64, 0.4);
+      color: var(--m3-soft); font-weight: 600; font-size: 0.92rem;
+    }
+
+    /* Partners strip */
+    .partners {
+      padding: 40px 0;
+      border-top: 1px solid var(--white-10);
+    }
+    .partners-label {
+      font-size: 0.78rem; letter-spacing: 0.2em;
+      color: var(--white-60); font-weight: 600;
+      text-transform: uppercase; text-align: center;
+      margin-bottom: 24px;
+    }
+    .partners-grid {
+      display: flex; justify-content: center; align-items: center;
+      gap: 40px; flex-wrap: wrap;
+    }
+    .partner-slot {
+      height: 72px; padding: 14px 28px;
+      display: inline-flex; align-items: center; justify-content: center;
+      background: var(--white);
+      border-radius: 14px;
+      font-family: var(--font);
+      font-size: 1rem;
+      color: var(--purple-900);
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      min-width: 160px;
+      text-align: center;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    }
+    .partner-slot.accent { background: var(--m1-red); color: var(--white); }
+    .partner-slot.yellow { background: var(--yellow); color: var(--purple-900); }
+    .partner-slot.outlined { background: transparent; color: var(--white); border: 2px solid var(--white); box-shadow: none; }
+    .partner-slot img { height: 44px; width: auto; display: block; }
+    .partner-logo { height: 80px; width: auto; display: block; filter: drop-shadow(0 4px 16px rgba(0,0,0,0.2)); }
+
+    /* Footer */
+    footer.site-footer {
+      background: rgba(0,0,0,0.4);
+      border-top: 1px solid var(--white-10);
+      color: var(--white-60);
+      padding: 56px 0 28px;
+      font-size: 0.92rem;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 36px;
+    }
+    @media (max-width: 820px) { .footer-grid { grid-template-columns: 1fr; gap: 28px; } }
+    footer h4 {
+      color: var(--white); font-size: 0.95rem; font-weight: 600;
+      margin-bottom: 16px; letter-spacing: 0.02em;
+    }
+    footer ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+    footer a { color: var(--white-60); }
+    footer a:hover { color: var(--white); }
+    .footer-bottom {
+      border-top: 1px solid var(--white-10);
+      padding-top: 22px;
+      display: flex; justify-content: space-between;
+      flex-wrap: wrap; gap: 12px;
+      font-size: 0.85rem; color: var(--white-60);
+    }
+    .footer-trayecto {
+      display: inline-block;
+      font-size: 0.78rem; letter-spacing: 0.14em;
+      color: var(--white-60); text-transform: uppercase;
+      font-weight: 600;
+      padding: 6px 14px; border-radius: 999px;
+      background: var(--white-05); border: 1px solid var(--white-10);
+      margin-top: 12px;
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 700ms ease, transform 700ms ease; }
+      .fade-in.visible { opacity: 1; transform: none; }
+    }
+    @media (prefers-reduced-motion: no-preference) {
+      .spin-slow { animation: spinSlow 90s linear infinite; transform-origin: 50% 50%; transform-box: fill-box; }
+    }
+    @keyframes spinSlow { to { transform: rotate(360deg); } }
+  </style>
+</head>
+<body>
+  <div class="bg-wrap" aria-hidden="true"></div>
+  <div class="bg-grid" aria-hidden="true"></div>
+
+  <a class="skip-link" href="#main">Saltar al contenido principal</a>
+
+  <header class="site-header">
+    <div class="container nav">
+      <a href="#" class="brand" aria-label="IA para Docentes Jalisco Academy 2026 - Inicio">
+        <img class="brand-logo" src="assets/logo-jalisco-academy.svg" alt="Jalisco Academy" height="48">
+        <span class="brand-text">
+          IA para Docentes 2026
+          <small>Trayecto de Innovación Educativa · SEJ</small>
+        </span>
+      </a>
+      <nav aria-label="Navegación principal">
+        <ul class="nav-links">
+          <li><a href="#trayecto">El trayecto</a></li>
+          <li><a href="#programa">Programa</a></li>
+          <li><a href="#gran-evento">Gran evento</a></li>
+          <li><a href="#aprende">Herramientas</a></li>
+          <li><a href="#constancia">Constancia</a></li>
+          <li><a href="#inscripcion" class="btn btn-primary" style="padding: 10px 20px; min-height: auto; font-size: 0.9rem;">Inscribirme</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container">
+        <div class="hero-grid">
+          <div>
+            <span class="eyebrow">
+              <span class="dot" aria-hidden="true"></span>
+              Proyecto Educativo Estatal 2024-2030 · SEJ
+            </span>
+            <h1 id="hero-title">
+              <span class="accent-red">IA para Docentes</span><br>
+              Jalisco Academy 2026
+            </h1>
+            <p class="hero-subtitle">
+              <span class="pill">Trayecto</span> de Innovación Educativa con Inteligencia Artificial
+            </p>
+
+            <div class="event-key">
+              <div class="event-key-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+                <span>Inicio · <strong>20 sep 2026</strong></span>
+              </div>
+              <div class="event-key-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                <span><strong>17:00 a 18:00</strong> hrs GDL</span>
+              </div>
+              <div class="event-key-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h20v14H2z"/><path d="M8 21h8M12 17v4"/></svg>
+                <span>Jalisco Academy</span>
+              </div>
+            </div>
+
+            <p class="lead">
+              Un trayecto estatal para que <strong>todas las y los docentes de Jalisco</strong>
+              <strong>identifiquen, construyan y conecten</strong> nuevas prácticas con
+              Gemini, NotebookLM y herramientas de IA para la innovación educativa.
+            </p>
+
+            <div class="hero-actions">
+              <a href="#inscripcion" class="btn btn-primary">
+                Inscribirme al trayecto
+                <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </a>
+              <a href="#trayecto" class="btn btn-secondary">
+                Conocer el trayecto
+              </a>
+            </div>
+
+            <div class="countdown-label">Faltan para la primera sesión</div>
+            <div class="countdown" role="timer" aria-live="polite" aria-label="Cuenta regresiva para IA para Docentes Jalisco">
+              <div class="countdown-unit">
+                <div class="num" id="cd-days">00</div>
+                <div class="unit-label">Días</div>
+              </div>
+              <span class="countdown-sep" aria-hidden="true">:</span>
+              <div class="countdown-unit">
+                <div class="num" id="cd-hours">00</div>
+                <div class="unit-label">Horas</div>
+              </div>
+              <span class="countdown-sep" aria-hidden="true">:</span>
+              <div class="countdown-unit">
+                <div class="num" id="cd-min">00</div>
+                <div class="unit-label">Min</div>
+              </div>
+              <span class="countdown-sep" aria-hidden="true">:</span>
+              <div class="countdown-unit">
+                <div class="num" id="cd-sec">00</div>
+                <div class="unit-label">Seg</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- HERO VISUAL -->
+          <div class="hero-visual" aria-label="Docente de Jalisco con Chromebook en aula">
+            <div class="hero-visual-orange-dot" aria-hidden="true"></div>
+            <img src="assets/hero-docente.png" alt="Docente de Jalisco sosteniendo una Chromebook en el aula, rodeado de estudiantes" loading="eager" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+            <div class="placeholder" style="display:none;">
+              <div>
+                <p>Zona para imagen ilustrativa</p>
+                <strong>IA para Docentes<br>Jalisco</strong>
+              </div>
+            </div>
+            <div class="hero-visual-badge" aria-hidden="true">20 · SEP · 2026</div>
+            <div class="hero-visual-tag">
+              <div class="t-label">9 horas · Constancia SEJ</div>
+              <div class="t-main">3 sesiones en vivo + 6h autogestivas</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- QUOTE -->
+    <section class="quote-band" aria-label="Frase del Proyecto Educativo Estatal">
+      <blockquote>
+        <p>En la diversidad que somos, todos aprendemos de todos.</p>
+        <footer>Proyecto Educativo Estatal · Jalisco</footer>
+      </blockquote>
+    </section>
+
+    <!-- STATS -->
+    <section class="stats" aria-label="Alcance del programa">
+      <div class="container">
+        <div class="stats-grid">
+          <div class="stat fade-in">
+            <div class="num">30,000</div>
+            <div class="label">Docentes convocados</div>
+          </div>
+          <div class="stat fade-in">
+            <div class="num">9 h</div>
+            <div class="label">Total del trayecto</div>
+          </div>
+          <div class="stat fade-in">
+            <div class="num">3</div>
+            <div class="label">Momentos del trayecto</div>
+          </div>
+          <div class="stat fade-in">
+            <div class="num">4</div>
+            <div class="label">Niveles educativos</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TRAYECTO -->
+    <section class="section" id="trayecto">
+      <div class="container">
+        <div class="section-head center">
+          <div class="section-eyebrow" style="justify-content: center;">Proyecto Educativo Estatal · SEJ</div>
+          <h2>Un <span class="accent-red">Trayecto</span> de <span class="accent-orange">Innovación</span> <span class="accent-green">Educativa</span></h2>
+          <p>
+            El trayecto se compone de tres momentos que invitan a emprender un proceso de
+            autonomía responsable: identificar los desafíos, construir respuestas creativas
+            y conectar con la comunidad para co-crear.
+          </p>
+        </div>
+
+        <!-- Diagrama -->
+        <div class="trayecto">
+          <div class="trayecto-diagram">
+            <!-- Imagen base (tu círculo con los 3 pétalos) -->
+            <img class="trayecto-image" src="assets/circulo-trayecto.png" alt="Trayecto de Innovación Educativa — Gestión dialógica de los aprendizajes, Gestión para la Transformación, Gestión de la práctica educativa">
+            <!-- Overlay SVG con solo el texto giratorio -->
+            <svg class="trayecto-overlay" viewBox="0 0 640 640" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <defs>
+                <!-- Path circular dentro del anillo gris (radio ajustado al borde exterior del círculo) -->
+                <path id="outerRing" d="M 320,320 m -290,0 a 290,290 0 1,1 580,0 a 290,290 0 1,1 -580,0" fill="none"/>
+              </defs>
+              <g class="spin-slow">
+                <text font-family="Garet, sans-serif" font-weight="800" font-size="22" fill="#D1D5DB" letter-spacing="6">
+                  <textPath href="#outerRing" startOffset="0%">IDENTIFICAR EL DESAFÍO  ✦  CONSTRUIR COLECTIVA Y CREATIVAMENTE  ✦  CONECTAR PARA CO-CREAR  ✦  </textPath>
+                </text>
+              </g>
+            </svg>
+          </div>
+
+          <!-- Legend -->
+          <div class="trayecto-legend">
+            <article class="trayecto-legend-item m1 fade-in">
+              <span class="tag">Momento 1</span>
+              <h3>Identificar el desafío</h3>
+              <p>Reconocemos las situaciones desafiantes del aula desde las que planteamos preguntas fundamentales para integrar IA.</p>
+              <small>Ámbito · Gestión de la Práctica educativa</small>
+            </article>
+            <article class="trayecto-legend-item m2 fade-in">
+              <span class="tag">Momento 2</span>
+              <h3>Construir colectiva y creativamente</h3>
+              <p>Exploramos Gemini, NotebookLM y herramientas de IA para dibujar respuestas nuevas a los desafíos identificados.</p>
+              <small>Ámbito · Gestión para la Transformación</small>
+            </article>
+            <article class="trayecto-legend-item m3 fade-in">
+              <span class="tag">Momento 3</span>
+              <h3>Conectar para co-crear</h3>
+              <p>Dialogamos con la comunidad docente para iterar, co-crear planeaciones y evaluaciones con IA.</p>
+              <small>Ámbito · Gestión dialógica de los aprendizajes</small>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALERÍA DOCENTES DE JALISCO -->
+    <section class="gallery" id="galeria" aria-labelledby="gallery-title">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-eyebrow">Docentes de Jalisco en movimiento</div>
+          <h2 id="gallery-title">Un trayecto para <span class="accent-red">todas las aulas</span> del estado</h2>
+          <p>Desde la exploración en preescolar hasta la docencia con herramientas de Google, el trayecto acompaña a cada docente en su contexto real.</p>
+        </div>
+        <div class="gallery-grid">
+          <figure class="gallery-item large g-preescolar">
+            <span class="badge-dot">Preescolar</span>
+            <img src="assets/galeria-preescolar.png" alt="Maestra de preescolar con niños en la Zona de Exploración, observando materiales con lupas" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+            <div class="gallery-placeholder" style="display:none;">Imagen: Zona de exploración · preescolar</div>
+            <figcaption class="caption">
+              <small>Momento 1 · Identificar el desafío</small>
+              Zona de exploración — la IA también tiene un lugar en el aprendizaje temprano
+            </figcaption>
+          </figure>
+
+          <figure class="gallery-item g-google">
+            <span class="badge-dot">Herramientas Google</span>
+            <img src="assets/galeria-google.png" alt="Docente trabajando con laptop Google en un entorno de capacitación" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+            <div class="gallery-placeholder" style="display:none;">Imagen: Docente con laptop Google</div>
+            <figcaption class="caption">
+              <small>Momento 2 · Construir</small>
+              Gemini, NotebookLM y el ecosistema Google al servicio del aula
+            </figcaption>
+          </figure>
+
+          <figure class="gallery-item g-plataforma">
+            <span class="badge-dot">Jalisco Academy</span>
+            <img src="assets/galeria-plataforma.png" alt="Laptop mostrando el portal institucional APPrende Jalisco" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+            <div class="gallery-placeholder" style="display:none;">Imagen: Plataforma Jalisco Academy</div>
+            <figcaption class="caption">
+              <small>Momento 3 · Conectar</small>
+              Todo el trayecto se aloja en la plataforma oficial de la SEJ
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROGRAMA - 3 SESIONES -->
+    <section class="section" id="programa">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-eyebrow">Programa sincrónico</div>
+          <h2>Tres sesiones, tres momentos <span class="accent-orange">del trayecto</span></h2>
+          <p>Una hora semanal por Jalisco Academy, más 6 horas de videos de apoyo autogestivos.</p>
+        </div>
+        <div class="sessions-grid">
+          <article class="session-card m1 fade-in">
+            <span class="session-momento">Momento 1 · Identificar el desafío</span>
+            <div class="session-date">20 SEP<small>Domingo · 2026</small></div>
+            <div class="session-time">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+              17:00 a 18:00 hrs
+            </div>
+            <div class="session-title">Sesión 1 · Apertura</div>
+            <h3>Reconocer los desafíos de mi práctica</h3>
+            <p>Qué es y qué no es la IA, cómo funciona, alcances reales en el aula y preguntas clave para integrarla con ética.</p>
+          </article>
+
+          <article class="session-card m2 fade-in">
+            <span class="session-momento">Momento 2 · Construir colectiva y creativamente</span>
+            <div class="session-date">28 SEP<small>Lunes · 2026</small></div>
+            <div class="session-time">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+              17:00 a 18:00 hrs
+            </div>
+            <div class="session-title">Sesión 2 · Exploración</div>
+            <h3>Gemini y NotebookLM en la práctica</h3>
+            <p>Uso pedagógico de Gemini, NotebookLM y Gemini en Workspace (Docs, Slides, Sheets) para dibujar respuestas creativas.</p>
+          </article>
+
+          <article class="session-card m3 fade-in">
+            <span class="session-momento">Momento 3 · Conectar para co-crear</span>
+            <div class="session-date">04 OCT<small>Domingo · 2026</small></div>
+            <div class="session-time">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+              17:00 a 18:00 hrs
+            </div>
+            <div class="session-title">Sesión 3 · Cierre</div>
+            <h3>Planear y evaluar con IA, en comunidad</h3>
+            <p>Diseño colaborativo de planeaciones, rúbricas y actividades con IA. Casos reales de aula y buenas prácticas compartidas.</p>
+          </article>
+        </div>
+
+        <div style="margin-top: 32px; padding: 20px 24px; background: var(--white-05); border: 1px solid var(--white-10); border-radius: 16px; display: flex; align-items: center; gap: 14px; flex-wrap: wrap;">
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 22px; height: 22px; color: var(--m2-orange); flex-shrink: 0;"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+          <span style="color: var(--white-80); font-size: 0.95rem;"><strong style="color: var(--white);">Más 6 horas de videos de apoyo autogestivos</strong> en Jalisco Academy — disponibles 24/7 para profundizar cada momento del trayecto.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SHOWCASE - GRAN EVENTO JALISCO ACADEMY -->
+    <section class="showcase" id="gran-evento" aria-labelledby="showcase-title">
+      <div class="container">
+        <div class="showcase-inner">
+          <div>
+            <div class="showcase-badge">
+              <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width: 16px; height: 16px;"><polygon points="12 2 15 9 22 9.3 17 14 18.5 21 12 17 5.5 21 7 14 2 9.3 9 9 12 2"/></svg>
+              Nueva oportunidad · Escaparate estatal
+            </div>
+            <h2 id="showcase-title">
+              Presenta tu proyecto final en el <em>gran evento Jalisco Academy 2026</em>
+            </h2>
+            <p>
+              Dentro del trayecto, las y los docentes participantes podrán <strong style="color:var(--white)">postular
+              su proyecto final</strong> para ser seleccionado y presentarlo en el escenario principal
+              de Jalisco Academy 2026, frente a <strong style="color:var(--white)">miles de colegas
+              de todo el estado</strong>.
+            </p>
+            <div class="showcase-stats">
+              <div class="showcase-stat">
+                <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 28px; height: 28px; color: var(--yellow);"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                <div>
+                  <div class="big">Miles</div>
+                  <div class="desc">de docentes<br>asistentes</div>
+                </div>
+              </div>
+              <div class="showcase-stat">
+                <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 28px; height: 28px; color: var(--yellow);"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                <div>
+                  <div class="big">1</div>
+                  <div class="desc">escenario estatal<br>de innovación</div>
+                </div>
+              </div>
+              <div class="showcase-stat">
+                <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 28px; height: 28px; color: var(--yellow);"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2z"/></svg>
+                <div>
+                  <div class="big">Reconocimiento</div>
+                  <div class="desc">oficial SEJ para<br>proyectos seleccionados</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SHOWCASE VISUAL -->
+          <div class="showcase-visual" aria-label="Docentes en capacitación Jalisco Academy">
+            <img src="assets/showcase-capacitacion.png" alt="Docente de Jalisco trabajando en laptop durante una capacitación grupal" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+            <div class="placeholder" style="display:none;">
+              <div class="showcase-spotlight" aria-hidden="true"></div>
+              <div style="position: relative; z-index: 2;">
+                <small>Gran evento · 2026</small>
+                <strong>Jalisco Academy</strong>
+              </div>
+            </div>
+            <div class="showcase-tag" aria-hidden="true">
+              Postulación abierta
+              <strong>desde el trayecto</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOOLS -->
+    <section class="section" id="aprende">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-eyebrow">¿Qué aprenderás?</div>
+          <h2>Un <span class="accent-red">kit completo</span> de IA para el aula</h2>
+          <p>Herramientas de Google y complementarias para recorrer los tres momentos del trayecto con criterio pedagógico y ética digital.</p>
+        </div>
+        <div class="tools-grid">
+          <article class="tool fade-in">
+            <div class="tool-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 22h20L12 2zm0 5l6.5 13h-13L12 7z"/></svg>
+            </div>
+            <h3>Gemini</h3>
+            <p>El asistente de IA de Google aplicado a la creación de recursos didácticos.</p>
+          </article>
+
+          <article class="tool fade-in">
+            <div class="tool-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="M4 9h16M9 4v16"/></svg>
+            </div>
+            <h3>NotebookLM</h3>
+            <p>Convierte tus documentos en tutor personalizado: resúmenes, podcasts y preguntas guiadas.</p>
+          </article>
+
+          <article class="tool fade-in">
+            <div class="tool-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 100 20 10 10 0 000-20z"/><path d="M2 12h20M12 2a15 15 0 010 20M12 2a15 15 0 000 20"/></svg>
+            </div>
+            <h3>Google AI Studio</h3>
+            <p>Diseña prompts, prototipa asistentes y prueba modelos de IA sin saber programar.</p>
+          </article>
+
+          <article class="tool fade-in">
+            <div class="tool-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+            </div>
+            <h3>Google Classroom con IA</h3>
+            <p>Retroalimentación asistida, generación de actividades y gestión inteligente de tareas.</p>
+          </article>
+
+          <article class="tool fade-in">
+            <div class="tool-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+            </div>
+            <h3>Gemini en Workspace</h3>
+            <p>IA integrada en Docs, Slides y Sheets para escribir, resumir, crear y analizar datos.</p>
+          </article>
+
+          <article class="tool fade-in">
+            <div class="tool-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg>
+            </div>
+            <h3>Canva con IA</h3>
+            <p>Diseña material visual, infografías y presentaciones didácticas asistidas por IA.</p>
+          </article>
+
+          <article class="tool fade-in">
+            <div class="tool-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 14l9-5-9-5-9 5 9 5z"/><path d="M12 14l6.16-3.422A12.083 12.083 0 0118 18.5c-2.21 1.5-4.5 2-6 2s-3.79-.5-6-2a12.083 12.083 0 01-.16-7.922L12 14z"/></svg>
+            </div>
+            <h3>MagicSchool y más</h3>
+            <p>Herramientas externas especializadas en docencia: planeaciones, rúbricas y retroalimentación.</p>
+          </article>
+
+          <article class="tool fade-in">
+            <div class="tool-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <h3>Ética y uso responsable</h3>
+            <p>Criterios de privacidad, propiedad intelectual y uso ético de IA con estudiantes.</p>
+          </article>
+
+          <article class="tool fade-in">
+            <div class="tool-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+            </div>
+            <h3>Planeación y evaluación</h3>
+            <p>Diseño de planeaciones didácticas, rúbricas y evaluaciones formativas con ayuda de IA.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONSTANCIA -->
+    <section class="section" id="constancia">
+      <div class="container">
+        <div class="constancia fade-in">
+          <div>
+            <div class="constancia-badge">
+              <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width: 18px; height: 18px;"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+              Constancia SEJ · 9 horas
+            </div>
+            <h2>Acredita tu <span class="accent-orange">trayecto formativo</span></h2>
+            <p>
+              Al completar los tres momentos del trayecto recibirás una constancia oficial expedida por la
+              <strong style="color:var(--white)">Secretaría de Educación Jalisco</strong>,
+              válida para tu formación continua dentro del Proyecto Educativo Estatal.
+            </p>
+            <ul>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+                <span>Asistencia a las <strong style="color:var(--white)">3 sesiones en vivo</strong> por Jalisco Academy</span>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+                <span>Visualización de los <strong style="color:var(--white)">6 videos de apoyo autogestivos</strong></span>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+                <span>Completar las <strong style="color:var(--white)">evaluaciones</strong> de cada momento del trayecto</span>
+              </li>
+            </ul>
+          </div>
+          <div class="constancia-visual" aria-hidden="true">
+            <div class="constancia-visual-inner">
+              <div class="cv-header">
+                <strong>SEJ · JALISCO</strong>
+                <strong style="color: var(--m1-red);">2026</strong>
+              </div>
+              <div class="cv-body">
+                <div class="cv-to">Otorga la presente a</div>
+                <div class="cv-name">Nombre del docente</div>
+                <div class="cv-desc">Por haber concluido el trayecto<br><strong>IA para Docentes Jalisco</strong></div>
+                <div class="cv-hours">9 h</div>
+                <div class="cv-hours-label">Total acreditadas</div>
+              </div>
+              <div class="cv-footer">
+                <span>Guadalajara · Oct 2026</span>
+                <span>Folio 000000</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA / INSCRIPCIÓN -->
+    <section class="cta" id="inscripcion" aria-labelledby="cta-title">
+      <div class="container">
+        <div class="cta-inner">
+          <div>
+            <div class="section-eyebrow" style="color: var(--m2-orange);">Cupo limitado · 30,000 docentes</div>
+            <h2 id="cta-title">Inicia tu <span class="accent-orange">trayecto de innovación</span> con IA</h2>
+            <p style="position: relative;">
+              Completa el formulario con tu <strong style="color:var(--white)">CCT</strong> y correo institucional.
+              Recibirás el acceso a Jalisco Academy y el calendario completo de los tres momentos.
+            </p>
+            <p style="margin-top: 16px; position: relative;">
+              <strong style="color: var(--white);">¿Dudas?</strong>
+              <a href="mailto:academy@jalisco.gob.mx">academy@jalisco.gob.mx</a>
+            </p>
+          </div>
+          <form class="cta-form" onsubmit="event.preventDefault(); this.querySelector('#form-success').hidden=false; this.querySelector('button[type=submit]').disabled=true;">
+            <h3>Inscripción docente</h3>
+            <p>Tus datos se validan con el padrón docente estatal.</p>
+
+            <div class="form-row">
+              <div class="form-field">
+                <label for="nombre">Nombre(s)</label>
+                <input id="nombre" name="nombre" type="text" required autocomplete="given-name" placeholder="María">
+              </div>
+              <div class="form-field">
+                <label for="apellidos">Apellidos</label>
+                <input id="apellidos" name="apellidos" type="text" required autocomplete="family-name" placeholder="García López">
+              </div>
+            </div>
+
+            <div class="form-field">
+              <label for="curp">CURP</label>
+              <input id="curp" name="curp" type="text" required maxlength="18" minlength="18" autocomplete="off" placeholder="XXXX000000XXXXXX00">
+              <small>18 caracteres</small>
+            </div>
+
+            <div class="form-row">
+              <div class="form-field">
+                <label for="cct">Clave CCT</label>
+                <input id="cct" name="cct" type="text" required maxlength="10" minlength="10" autocomplete="off" placeholder="14EPR0000X">
+              </div>
+              <div class="form-field">
+                <label for="nivel">Nivel educativo</label>
+                <select id="nivel" name="nivel" required>
+                  <option value="">Selecciona</option>
+                  <option value="preescolar">Preescolar</option>
+                  <option value="primaria">Primaria</option>
+                  <option value="secundaria">Secundaria</option>
+                  <option value="media-superior">Media superior</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-field">
+              <label for="email">Correo institucional</label>
+              <input id="email" name="email" type="email" required autocomplete="email" placeholder="docente@sej.edu.mx">
+            </div>
+
+            <button type="submit" class="btn btn-primary">
+              Confirmar inscripción
+              <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </button>
+
+            <div id="form-success" role="status" hidden>
+              Inscripción enviada. Recibirás el acceso a Jalisco Academy en tu correo institucional en las próximas 48 horas.
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- PARTNERS STRIP -->
+    <section class="partners" aria-label="Logos institucionales">
+      <div class="container">
+        <div class="partners-label">Una iniciativa de</div>
+        <div class="partners-grid">
+          <img class="partner-logo" src="assets/logo-jalisco-academy.svg" alt="Jalisco Academy" height="80">
+          <!-- LOGO SLOT: reemplaza por <img src="assets/logo-sej.png" alt="SEJ"> -->
+          <span class="partner-slot">SEJ</span>
+          <!-- LOGO SLOT: reemplaza por <img src="assets/logo-sfam.png" alt="SFAM"> -->
+          <span class="partner-slot yellow">SFAM</span>
+          <!-- LOGO SLOT: reemplaza por <img src="assets/logo-gob-jalisco.png" alt="Gobierno de Jalisco"> -->
+          <span class="partner-slot outlined">Gobierno de Jalisco</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="brand" style="margin-bottom: 14px;">
+            <span class="brand-text">
+              IA para Docentes · Jalisco Academy 2026
+              <small>SEJ · Jalisco Academy</small>
+            </span>
+          </div>
+          <p style="color: var(--white-60); margin: 0; max-width: 44ch; font-size: 0.92rem;">
+            Trayecto formativo en Inteligencia Artificial para docentes, coordinado por la
+            Secretaría de Educación Jalisco a través de Jalisco Academy.
+          </p>
+          <span class="footer-trayecto">
+            Alineado al Proyecto Educativo Estatal 2024-2030
+          </span>
+        </div>
+        <div>
+          <h4>Navegación</h4>
+          <ul>
+            <li><a href="#trayecto">El trayecto</a></li>
+            <li><a href="#programa">Programa sincrónico</a></li>
+            <li><a href="#gran-evento">Gran evento Jalisco Academy</a></li>
+            <li><a href="#aprende">Herramientas</a></li>
+            <li><a href="#constancia">Constancia</a></li>
+            <li><a href="#inscripcion">Inscripción</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contacto institucional</h4>
+          <ul>
+            <li>Secretaría de Educación Jalisco</li>
+            <li>Jalisco Academy</li>
+            <li><a href="mailto:academy@jalisco.gob.mx">academy@jalisco.gob.mx</a></li>
+            <li><a href="https://www.jalisco.gob.mx/es/gobierno/dependencias/secretaria-de-educacion" target="_blank" rel="noopener">Sitio oficial SEJ</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Gobierno del Estado de Jalisco · Secretaría de Educación</span>
+        <span>Aviso de privacidad · Accesibilidad · Transparencia</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Countdown to September 20, 2026 17:00 hora Guadalajara (UTC-6)
+    (function() {
+      const target = new Date('2026-09-20T17:00:00-06:00').getTime();
+      const $d = document.getElementById('cd-days');
+      const $h = document.getElementById('cd-hours');
+      const $m = document.getElementById('cd-min');
+      const $s = document.getElementById('cd-sec');
+      const pad = n => String(Math.max(0, n)).padStart(2, '0');
+
+      function tick() {
+        const now = Date.now();
+        let diff = Math.max(0, target - now);
+        const days = Math.floor(diff / 86400000); diff -= days * 86400000;
+        const hrs  = Math.floor(diff / 3600000);   diff -= hrs * 3600000;
+        const mins = Math.floor(diff / 60000);     diff -= mins * 60000;
+        const secs = Math.floor(diff / 1000);
+        $d.textContent = pad(days);
+        $h.textContent = pad(hrs);
+        $m.textContent = pad(mins);
+        $s.textContent = pad(secs);
+      }
+      tick();
+      setInterval(tick, 1000);
+    })();
+
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!prefersReduced && 'IntersectionObserver' in window) {
+      const els = document.querySelectorAll('.fade-in');
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.15 });
+      els.forEach(el => io.observe(el));
+    } else {
+      document.querySelectorAll('.fade-in').forEach(el => el.classList.add('visible'));
+    }
+  </script>
+</body>
+</html>
